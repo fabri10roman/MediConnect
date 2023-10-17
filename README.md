@@ -1,6 +1,8 @@
 # MediConnect
 Trabajo de Sistema Distribuido
-Integrantes: 
+
+## Integrantes
+
 * Juan David 
 * Fabrizio Román
 * Victor Irala
