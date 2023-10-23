@@ -1,22 +1,22 @@
-package com.sistemas.distribuidos.mediconnect.model;
+package com.sistemas.distribuidos.mediconnect.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
-public class Paciente {
+@Table(name = "paciente")
+public class PacienteModel {
     @Id
-    private Integer cedula;
-    private  String nombre;
+    private Long cedula;
+    private String nombre;
     private String apellido;
+
     private Character sexo;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-
-    public Paciente(Integer cedula, String nombre, String apellido, Character sexo, Date nacimiento) {
+    private Integer deudas;
+    public PacienteModel(Long cedula, String nombre, String apellido, Character sexo, Date nacimiento) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,14 +24,14 @@ public class Paciente {
         this.nacimiento = nacimiento;
     }
 
-    public Paciente() {
+    public PacienteModel() {
     }
 
-    public Integer getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
-    public void setCedula(Integer cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 
@@ -65,6 +65,14 @@ public class Paciente {
 
     public void setNacimiento(Date nacimiento) {
         this.nacimiento = nacimiento;
+    }
+
+    public Integer getDeudas() {
+        return deudas;
+    }
+
+    public void setDeudas(Integer deudas) {
+        this.deudas = deudas;
     }
 
     @Override
