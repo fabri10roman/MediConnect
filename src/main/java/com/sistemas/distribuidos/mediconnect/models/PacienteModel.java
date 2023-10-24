@@ -15,9 +15,9 @@ public class PacienteModel {
     private Character sexo;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-    private Integer deudas;
+    private Long deudas;
 
-    public PacienteModel(Long cedula, String nombre, String apellido, Character sexo, Date nacimiento, Integer deudas) {
+    public PacienteModel(Long cedula, String nombre, String apellido, Character sexo, Date nacimiento, Long deudas) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -70,12 +70,12 @@ public class PacienteModel {
         this.nacimiento = nacimiento;
     }
 
-    public Integer getDeudas() {
+    public Long getDeudas() {
         return deudas;
     }
 
-    public void setDeudas(Integer deudas) {
-        this.deudas = 0;
+    public void setDeudas(Long deudas) {
+        this.deudas = 0L;
     }
 
     @Override

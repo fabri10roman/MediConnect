@@ -20,4 +20,8 @@ public class PacienteService {
     public ArrayList obtenerPacientes(){
         return (ArrayList<PacienteModel>) pacienteRepository.findAll();
     }
+
+    public Long obtenerDeudas(Long id){
+        return pacienteRepository.findById(id).get().getDeudas();
+    }
 }

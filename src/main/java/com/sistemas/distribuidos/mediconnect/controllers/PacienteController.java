@@ -21,6 +21,11 @@ public class PacienteController {
         return pacienteService.obtenerPacientes();
     }
 
+    @GetMapping("/deudas/{CI}")
+    public Long obtenerDeudas(@PathVariable Long CI){
+        return pacienteService.obtenerDeudas(CI);
+    }
+
     @PostMapping(value ="/registro")
     public PacienteModel registrarPaciente (@RequestBody PacienteModel paciente){
         return this.pacienteService.registrarPaciente(paciente);
