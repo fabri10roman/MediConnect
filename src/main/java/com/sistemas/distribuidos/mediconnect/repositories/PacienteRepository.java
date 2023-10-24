@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.sistemas.distribuidos.mediconnect.models.PacienteModel;
 
 @Repository
-public interface PacienteRepository extends JpaRepository<PacienteRepository, Long>{
+public interface PacienteRepository extends JpaRepository<PacienteModel, Integer>{
 }
