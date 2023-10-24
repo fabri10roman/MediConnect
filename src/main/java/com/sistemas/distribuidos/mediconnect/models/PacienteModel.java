@@ -8,19 +8,16 @@ import java.util.Date;
 @Table(name = "paciente")
 public class PacienteModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer pacienteId;
     private Long cedula;
     private String nombre;
     private String apellido;
 
-    private String sexo;
+    private Character sexo;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-    private Long deudas;
+    private Integer deudas;
 
-    public PacienteModel(Integer pacienteId, Long cedula, String nombre, String apellido, String sexo, Date nacimiento, Long deudas) {
-        this.pacienteId = pacienteId;
+    public PacienteModel(Long cedula, String nombre, String apellido, Character sexo, Date nacimiento, Integer deudas) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,13 +29,6 @@ public class PacienteModel {
     public PacienteModel() {
     }
 
-    public Integer getPacienteId() {
-        return pacienteId;
-    }
-
-    public void setPacienteId(Integer pacienteId) {
-        this.pacienteId = pacienteId;
-    }
 
     public Long getCedula() {
         return cedula;
@@ -64,11 +54,11 @@ public class PacienteModel {
         this.apellido = apellido;
     }
 
-    public String getSexo() {
+    public Character getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
 
@@ -80,24 +70,22 @@ public class PacienteModel {
         this.nacimiento = nacimiento;
     }
 
-    public Long getDeudas() {
+    public Integer getDeudas() {
         return deudas;
     }
 
-    public void setDeudas(Long deudas) {
-        this.deudas = deudas;
+    public void setDeudas(Integer deudas) {
+        this.deudas = 0;
     }
 
     @Override
     public String toString() {
-        return "PacienteModel{" +
-                "pacienteId=" + pacienteId +
-                ", cedula=" + cedula +
+        return "Paciente{" +
+                "cedula=" + cedula +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", sexo='" + sexo + '\'' +
+                ", sexo=" + sexo +
                 ", nacimiento=" + nacimiento +
-                ", deudas=" + deudas +
                 '}';
     }
 }
