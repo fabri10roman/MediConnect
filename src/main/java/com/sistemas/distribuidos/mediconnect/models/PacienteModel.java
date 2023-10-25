@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "paciente")
+@Table(name = "pacientes")
 public class PacienteModel {
     @Id
     private Long cedula;

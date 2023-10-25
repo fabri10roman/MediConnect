@@ -1,12 +1,14 @@
 package com.sistemas.distribuidos.mediconnect.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table (name = "especialista")
+@Table (name = "especialistas")
 public class EspecialistaModel {
 
     @Id
@@ -15,14 +17,26 @@ public class EspecialistaModel {
     private String apellido;
     private String especialidad;
 
-    public EspecialistaModel(Long cedula, String nombre, String apellido, String especialidad) {
+    @OneToMany(mappedBy = "especialista")
+    private List<FechaModel> fechas;
+
+    public EspecialistaModel(Long cedula, String nombre, String apellido, String especialidad, List<FechaModel> fechas) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.especialidad = especialidad;
+        this.fechas = fechas;
     }
 
     public EspecialistaModel() {
+    }
+
+    public List<FechaModel> getFechas() {
+        return fechas;
+    }
+
+    public void setFechas(List<FechaModel> fechas) {
+        this.fechas = fechas;
     }
 
     public Long getCedula() {
@@ -64,6 +78,7 @@ public class EspecialistaModel {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", especialidad='" + especialidad + '\'' +
+                ", fechas=" + fechas +
                 '}';
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class EspecialistaService {
@@ -15,5 +16,9 @@ public class EspecialistaService {
 
     public ArrayList obtenerEspecialistas(String especialidad){
         return (ArrayList<EspecialistaModel>) especialistaRepository.findByEspecialidad(especialidad);
+    }
+
+    public ArrayList obtenerDisponibilidad (Long cedula){
+        ArrayList<Date> fechas = especialistaRepository.;
     }
 }
