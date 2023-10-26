@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -18,7 +18,7 @@ public class FechaService {
 
     public ArrayList<Date> obtenerFechas (Long ci){
 
-        return (ArrayList<Date>) fechaRepository.findByCi(ci);
+        return fechaRepository.findByCi(ci);
     }
 
     public ArrayList<FechaModel> findByCiAndFecha (Long ci, Date fecha){

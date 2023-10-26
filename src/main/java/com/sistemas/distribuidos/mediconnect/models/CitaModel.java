@@ -2,7 +2,7 @@ package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "citas")
