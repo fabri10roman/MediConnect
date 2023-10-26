@@ -2,7 +2,7 @@ package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "consultas")
@@ -19,7 +19,6 @@ public class ConsultaModel {
     private Long ciEspecialista;
     private String motivo;
     private String comentarios;
-    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     public ConsultaModel(Long id, Long ciPaciente, Long ciEspecialista, String motivo, String comentarios, Date fecha) {

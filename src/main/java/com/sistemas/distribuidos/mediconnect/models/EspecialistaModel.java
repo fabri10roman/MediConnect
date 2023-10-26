@@ -3,9 +3,6 @@ package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table (name = "especialistas")

@@ -23,7 +23,11 @@ public class PacienteController {
 
     @GetMapping("/deudas/{CI}")
     public Long obtenerDeudas(@PathVariable Long CI){
-        return pacienteService.obtenerDeudas(CI);
+        if (pacienteService.obtenerPorCi(CI).isPresent()) {
+            return pacienteService.obtenerDeudas(CI);
+        }
+        System.out.println("Verifica que el CI del paciente sea correcto");
+        return null;
     }
 
     @PostMapping(value ="/registrar")

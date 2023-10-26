@@ -1,7 +1,6 @@
 package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
-import org.apache.juli.logging.Log;
 
 import java.util.Date;
 
@@ -12,9 +11,7 @@ public class CitaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(name = "ciPaciente")
     private Long ciPaciente;
-    @Column(name = "ciEspecialista")
 
     private Long ciEspecialista;
     @Temporal(TemporalType.DATE)

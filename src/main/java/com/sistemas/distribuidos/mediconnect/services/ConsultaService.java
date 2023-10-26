@@ -15,4 +15,5 @@ public class ConsultaService {
     public ConsultaModel registrarConsulta (ConsultaModel consulta){
         return consultaRepository.save(consulta);
     }
+
 }

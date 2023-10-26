@@ -2,7 +2,7 @@ package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table (name = "fechas")
@@ -14,7 +14,6 @@ public class FechaModel {
     private Integer id;
     private Long ci;
 
-    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     public FechaModel(Integer id, Long ci, Date fecha) {

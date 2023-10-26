@@ -21,8 +21,14 @@ public class FechaService {
         return (ArrayList<Date>) fechaRepository.findByCi(ci);
     }
 
-    public ArrayList<FechaModel> findByColumnLongAndColumnDate (Long ci, Date fecha){
+    public ArrayList<FechaModel> findByCiAndFecha (Long ci, Date fecha){
 
-        return fechaRepository.findByColumnLongAndColumnDate(ci, fecha);
+        return fechaRepository.findByCiAndFecha(ci, fecha);
+    }
+
+
+    // Esto es una prueba para agendar cita
+    public FechaModel findById(Long id){
+        return fechaRepository.findById(id).get();
     }
 }

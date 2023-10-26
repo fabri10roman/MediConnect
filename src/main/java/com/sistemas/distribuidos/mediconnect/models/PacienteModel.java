@@ -2,7 +2,7 @@ package com.sistemas.distribuidos.mediconnect.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "pacientes")
@@ -13,7 +13,6 @@ public class PacienteModel {
     private String apellido;
 
     private Character sexo;
-    @Temporal(TemporalType.DATE)
     private Date nacimiento;
     private Long deudas;
 

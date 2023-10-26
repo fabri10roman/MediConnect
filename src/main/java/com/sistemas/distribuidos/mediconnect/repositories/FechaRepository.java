@@ -15,5 +15,5 @@ public interface FechaRepository extends JpaRepository<FechaModel, Long> {
     @Query("select f from FechaModel f where f.ci = ?1")
     ArrayList<Date> findByCi(Long ci);
 
-    ArrayList<FechaModel> findByColumnLongAndColumnDate(Long ci, Date fecha);
+    ArrayList<FechaModel> findByCiAndFecha(Long ci, Date fecha);
 }

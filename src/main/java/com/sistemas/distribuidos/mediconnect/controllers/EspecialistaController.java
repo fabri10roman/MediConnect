@@ -28,7 +28,8 @@ public class EspecialistaController {
     }
 
     @GetMapping(value = "/fechas/{CI}")
-    public ArrayList<Date> obtenerFechas (@PathVariable Long ci){
-        return fechaService.obtenerFechas(ci);
+    public ArrayList<Date> obtenerFechas (@PathVariable Long CI){
+
+        return fechaService.obtenerFechas(CI);
     }
 }
