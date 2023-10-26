@@ -17,27 +17,16 @@ public class EspecialistaModel {
     private String apellido;
     private String especialidad;
 
-    @OneToMany(mappedBy = "especialista")
-    private List<FechaModel> fechas;
-
-    public EspecialistaModel(Long cedula, String nombre, String apellido, String especialidad, List<FechaModel> fechas) {
+    public EspecialistaModel(Long cedula, String nombre, String apellido, String especialidad) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.especialidad = especialidad;
-        this.fechas = fechas;
     }
 
     public EspecialistaModel() {
     }
 
-    public List<FechaModel> getFechas() {
-        return fechas;
-    }
-
-    public void setFechas(List<FechaModel> fechas) {
-        this.fechas = fechas;
-    }
 
     public Long getCedula() {
         return cedula;
@@ -78,7 +67,6 @@ public class EspecialistaModel {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", especialidad='" + especialidad + '\'' +
-                ", fechas=" + fechas +
                 '}';
     }
 }

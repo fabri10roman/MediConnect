@@ -18,7 +18,4 @@ public class EspecialistaService {
         return (ArrayList<EspecialistaModel>) especialistaRepository.findByEspecialidad(especialidad);
     }
 
-    public ArrayList obtenerDisponibilidad (Long cedula){
-        ArrayList<Date> fechas = especialistaRepository.;
-    }
 }

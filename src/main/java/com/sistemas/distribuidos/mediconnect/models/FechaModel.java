@@ -12,36 +12,18 @@ public class FechaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private Long ciEspecialista;
+    private Long ci;
+
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
-    @ManyToOne
-    private EspecialistaModel especialista;
-
-    public FechaModel(Integer id, Long ciEspecialista, Date fecha) {
+    public FechaModel(Integer id, Long ci, Date fecha) {
         this.id = id;
-        this.ciEspecialista = ciEspecialista;
+        this.ci = ci;
         this.fecha = fecha;
     }
 
     public FechaModel() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Long getCiEspecialista() {
-        return ciEspecialista;
-    }
-
-    public void setCiEspecialista(Long ciEspecialista) {
-        this.ciEspecialista = ciEspecialista;
     }
 
     public Date getFecha() {
@@ -52,11 +34,27 @@ public class FechaModel {
         this.fecha = fecha;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Long getCi() {
+        return ci;
+    }
+
+    public void setCi(Long ci) {
+        this.ci = ci;
+    }
+
     @Override
     public String toString() {
         return "FechaModel{" +
                 "id=" + id +
-                ", ciEspecialista=" + ciEspecialista +
+                ", ci=" + ci +
                 ", fecha=" + fecha +
                 '}';
     }

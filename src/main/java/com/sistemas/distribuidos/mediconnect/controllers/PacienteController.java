@@ -26,7 +26,7 @@ public class PacienteController {
         return pacienteService.obtenerDeudas(CI);
     }
 
-    @PostMapping(value ="/registro")
+    @PostMapping(value ="/registrar")
     public PacienteModel registrarPaciente (@RequestBody PacienteModel paciente){
         return this.pacienteService.registrarPaciente(paciente);
     }

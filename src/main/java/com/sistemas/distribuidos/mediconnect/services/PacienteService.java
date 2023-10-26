@@ -14,6 +14,7 @@ public class PacienteService {
     PacienteRepository pacienteRepository;
 
     public PacienteModel registrarPaciente(PacienteModel paciente){
+
         return pacienteRepository.save(paciente);
     }
 
