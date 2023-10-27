@@ -48,7 +48,9 @@ public class CitaController {
                 System.out.println("Verificar bien la fecha o ya no existe turno posible en la fecha");
             }
         }
-        System.out.println("Verifica el CI del paciente y del especialista");
+        else{
+            System.out.println("Verifica el CI del paciente y del especialista");
+        }
 
         return null;
 
