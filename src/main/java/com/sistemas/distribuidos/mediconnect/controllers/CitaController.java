@@ -1,14 +1,15 @@
 package com.sistemas.distribuidos.mediconnect.controllers;
 
+import com.sistemas.distribuidos.mediconnect.dto.CitaDto;
 import com.sistemas.distribuidos.mediconnect.models.CitaModel;
-import com.sistemas.distribuidos.mediconnect.models.ConsultaModel;
-import com.sistemas.distribuidos.mediconnect.models.FechaModel;
 import com.sistemas.distribuidos.mediconnect.services.CitaService;
+import com.sistemas.distribuidos.mediconnect.services.EspecialistaService;
 import com.sistemas.distribuidos.mediconnect.services.FechaService;
+import com.sistemas.distribuidos.mediconnect.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+
 import java.sql.Date;
 
 @RestController
@@ -21,24 +22,28 @@ public class CitaController {
     @Autowired
     private FechaService fechaService;
 
-    @GetMapping(value = "/agendar")
-    public CitaModel agendarCita(@RequestBody CitaModel cita){
+    @Autowired
+    private PacienteService pacienteService;
 
-        ArrayList<FechaModel> model = fechaService.findByCiAndFecha(cita.getCiEspecialista(),cita.getFecha());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("************************************************");
-        System.out.println(cita.getCiEspecialista());
-        System.out.println(cita.getFecha());
-        System.out.println(fechaService.findById(2L).getFecha());
-        System.out.println("************************************************");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        if (model.size() > 0){
-            return this.citaService.agendarCita(cita);
+    @Autowired
+    private EspecialistaService especialistaService;
+
+    @PostMapping(value = "/agendar")
+    public CitaModel agendarCita(@RequestBody CitaDto cita){
+
+        if (pacienteService.obtenerPorCi(cita.getCiPaciente()).isPresent() && especialistaService.obtenerPorCi(cita.getCiEspecialista()).isPresent()){
+
+            if (!fechaService.findByCiAndFechaAndCantidadConsulta(cita.getCiEspecialista(),Date.valueOf(cita.getFecha())).isEmpty()){
+
+                    return citaService.agendarCita(new CitaModel(cita.getId(),cita.getCiPaciente(),cita.getCiEspecialista(),Date.valueOf(cita.getFecha())));
+            }
+            else {
+                System.out.println("Verificar bien la fecha o ya no existe turno posible en la fecha");
+            }
         }
+        System.out.println("Verifica el CI del paciente y del especialista");
+
         return null;
+
     }
 }

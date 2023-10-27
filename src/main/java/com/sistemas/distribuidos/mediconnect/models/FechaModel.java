@@ -10,19 +10,30 @@ import java.sql.Date;
 public class FechaModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Long ci;
 
     private Date fecha;
 
-    public FechaModel(Integer id, Long ci, Date fecha) {
+    private Integer cantidadConsultas;
+
+    public FechaModel(Integer id, Long ci, Date fecha, Integer cantidadConsultas) {
         this.id = id;
         this.ci = ci;
         this.fecha = fecha;
+        this.cantidadConsultas = cantidadConsultas;
     }
 
     public FechaModel() {
+    }
+
+    public Integer getCantidadConsultas() {
+        return cantidadConsultas;
+    }
+
+    public void setCantidadConsultas(Integer cantidadConsultas) {
+        this.cantidadConsultas = cantidadConsultas;
     }
 
     public Date getFecha() {
@@ -55,6 +66,7 @@ public class FechaModel {
                 "id=" + id +
                 ", ci=" + ci +
                 ", fecha=" + fecha +
+                ", cantidadConsultas=" + cantidadConsultas +
                 '}';
     }
 }

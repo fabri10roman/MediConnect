@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.sql.Date;
 
 @RestController
 @RequestMapping("/especialistas")
@@ -27,9 +26,4 @@ public class EspecialistaController {
         return especialistaService.obtenerEspecialistas(ESPECIALIDAD);
     }
 
-    @GetMapping(value = "/fechas/{CI}")
-    public ArrayList<Date> obtenerFechas (@PathVariable Long CI){
-
-        return fechaService.obtenerFechas(CI);
-    }
 }

@@ -1,29 +1,27 @@
-package com.sistemas.distribuidos.mediconnect.models;
+package com.sistemas.distribuidos.mediconnect.dto;
 
-import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
-@Entity
-@Table(name = "citas")
-public class CitaModel {
+public class CitaDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
     private Long id;
     private Long ciPaciente;
 
     private Long ciEspecialista;
-    private Date fecha;
 
-    public CitaModel(Long id, Long ciPaciente, Long ciEspecialista, Date fecha) {
+
+    private LocalDate fecha;
+
+    public CitaDto(Long id, Long ciPaciente, Long ciEspecialista, LocalDate fecha) {
         this.id = id;
         this.ciPaciente = ciPaciente;
         this.ciEspecialista = ciEspecialista;
         this.fecha = fecha;
     }
 
-    public CitaModel() {
+    public CitaDto() {
     }
 
     public Long getId() {
@@ -50,21 +48,11 @@ public class CitaModel {
         this.ciEspecialista = ciEspecialista;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    @Override
-    public String toString() {
-        return "CitaModel{" +
-                "id=" + id +
-                ", ciPaciente=" + ciPaciente +
-                ", ciEspecialista=" + ciEspecialista +
-                ", fecha=" + fecha +
-                '}';
     }
 }
