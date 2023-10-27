@@ -6,7 +6,6 @@ import com.sistemas.distribuidos.mediconnect.repositories.PacienteRepository;
 import com.sistemas.distribuidos.mediconnect.models.PacienteModel;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class PacienteService {
@@ -26,8 +25,7 @@ public class PacienteService {
         return pacienteRepository.findById(id).get().getDeudas();
     }
 
-    public Optional<PacienteModel> obtenerPorCi (Long ci) {
-
+    public PacienteModel obtenerPorCi (Long ci) {
         return pacienteRepository.findBycedula(ci);
     }
 

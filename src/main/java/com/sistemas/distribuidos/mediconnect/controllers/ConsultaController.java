@@ -1,7 +1,9 @@
 package com.sistemas.distribuidos.mediconnect.controllers;
 
+import com.sistemas.distribuidos.mediconnect.exception.BadRequestException;
 import com.sistemas.distribuidos.mediconnect.models.ConsultaModel;
 
+import com.sistemas.distribuidos.mediconnect.models.EspecialistaModel;
 import com.sistemas.distribuidos.mediconnect.services.ConsultaService;
 import com.sistemas.distribuidos.mediconnect.services.EspecialistaService;
 import com.sistemas.distribuidos.mediconnect.services.PacienteService;
@@ -20,18 +22,28 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     @Autowired
-    private EspecialistaService especialistaService;
+    private PacienteService pacienteService;
 
     @Autowired
-    private PacienteService pacienteService;
+    private EspecialistaService especialistaService;
 
     @PostMapping("/registrar")
     public ConsultaModel registrarConsulta (@RequestBody ConsultaModel consulta) {
-        if (especialistaService.obtenerPorCi(consulta.getCiEspecialista()).isPresent() && pacienteService.obtenerPorCi(consulta.getCiPaciente()).isPresent()) {
-            return this.consultaService.registrarConsulta(consulta);
+
+
+        if (pacienteService.obtenerPorCi(consulta.getCiPaciente()) == null){
+            throw new BadRequestException("Verifica el CI del paciente");
         }
-        System.out.println("Verifica que el CI del paciente y el CI del especialista sea correcto");
-        return null;
+
+        try {
+            EspecialistaModel especialista = especialistaService.obtenerPorCi(consulta.getCiEspecialista());
+        } catch (Exception e) {
+            throw new BadRequestException("Verifica el CI del especialista");
+        }
+
+
+        return this.consultaService.registrarConsulta(consulta);
+
     }
 
 }

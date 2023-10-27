@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.Optional;
 
 @Service
 public class FechaService {
@@ -25,8 +24,12 @@ public class FechaService {
     }
 
 
-    public Optional<FechaModel> findByCiAndFechaAndCantidadConsulta (Long ci, Date fecha){
+    public FechaModel findByCiAndFechaAndCantidadConsulta (Long ci, Date fecha){
         return fechaRepository.findByCiAndFechaAndCantidadConsulta(ci, fecha);
+    }
+
+    public FechaModel findByCiAndFecha(Long ci, Date fecha){
+        return fechaRepository.findByCiAndFecha(ci, fecha);
     }
 
 }

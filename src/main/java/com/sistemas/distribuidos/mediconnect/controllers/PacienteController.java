@@ -1,5 +1,6 @@
 package com.sistemas.distribuidos.mediconnect.controllers;
 
+import com.sistemas.distribuidos.mediconnect.exception.BadRequestException;
 import com.sistemas.distribuidos.mediconnect.models.PacienteModel;
 import com.sistemas.distribuidos.mediconnect.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,14 @@ public class PacienteController {
 
     @GetMapping("/deudas/{CI}")
     public Long obtenerDeudas(@PathVariable Long CI){
-        if (pacienteService.obtenerPorCi(CI).isPresent()) {
-            return pacienteService.obtenerDeudas(CI);
-        }
-        System.out.println("Verifica que el CI del paciente sea correcto");
-        return null;
-    }
 
+        try{
+            return pacienteService.obtenerDeudas(CI);
+        }catch (Exception e){
+            throw new BadRequestException("CI del paciente no existe");
+        }
+
+    }
     @PostMapping(value ="/registrar")
     public PacienteModel registrarPaciente (@RequestBody PacienteModel paciente){
         return this.pacienteService.registrarPaciente(paciente);

@@ -1,5 +1,7 @@
 package com.sistemas.distribuidos.mediconnect.controllers;
 
+import com.sistemas.distribuidos.mediconnect.exception.BadRequestException;
+import com.sistemas.distribuidos.mediconnect.exception.ResourceNotFoundException;
 import com.sistemas.distribuidos.mediconnect.services.EspecialistaService;
 import com.sistemas.distribuidos.mediconnect.services.FechaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,18 @@ public class FechaController {
     private EspecialistaService especialistaService;
     @GetMapping("/{CI}")
     public ArrayList<Date> obtenerFechas (@PathVariable Long CI){
-        if (especialistaService.obtenerPorCi(CI).isPresent()){
-            return fechaService.obtenerFechas(CI);
+
+
+        if (especialistaService.obtenerPorCi(CI) == null){
+            throw new BadRequestException("Verifica el CI del paciente");
         }
-        System.out.println("Verifica que el CI del especialista sea el correcto");
-        return null;
+
+        ArrayList<Date> fechas = fechaService.obtenerFechas(CI);
+        if (fechas.isEmpty()){
+            throw new ResourceNotFoundException("No hay fechas disponibles");
+        }
+        return fechas;
+
+
     }
 }
