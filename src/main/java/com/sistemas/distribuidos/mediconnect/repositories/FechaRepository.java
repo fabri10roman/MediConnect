@@ -18,6 +18,5 @@ public interface FechaRepository extends JpaRepository<FechaModel, Long> {
 
     @Query("SELECT f FROM FechaModel f WHERE f.ci =:ci AND f.fecha =:fecha AND f.cantidadConsultas > 0")
     ArrayList<FechaModel> findByCiAndFechaAndCantidadConsulta (@Param("ci") Long ci, @Param("fecha") Date fecha);
-    ArrayList<FechaModel> findByCiAndFecha(Long ci, Date fecha);
 
 }

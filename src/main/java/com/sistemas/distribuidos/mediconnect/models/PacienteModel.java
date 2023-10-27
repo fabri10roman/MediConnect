@@ -11,10 +11,9 @@ public class PacienteModel {
     private Long cedula;
     private String nombre;
     private String apellido;
-
     private Character sexo;
     private Date nacimiento;
-    private Long deudas;
+    private Long deudas = 0L;
 
     public PacienteModel(Long cedula, String nombre, String apellido, Character sexo, Date nacimiento, Long deudas) {
         this.cedula = cedula;
@@ -74,7 +73,7 @@ public class PacienteModel {
     }
 
     public void setDeudas(Long deudas) {
-        this.deudas = 0L;
+        this.deudas = deudas;
     }
 
     @Override

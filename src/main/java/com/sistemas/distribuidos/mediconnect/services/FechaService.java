@@ -16,15 +16,15 @@ public class FechaService {
     @Autowired
     private FechaRepository fechaRepository;
 
+    public void registrarFecha(FechaModel fecha){
+        fechaRepository.save(fecha);
+    }
+
     public ArrayList<Date> obtenerFechas (Long ci){
 
         return fechaRepository.findByCiAndCantidadConsultas(ci);
     }
 
-    public ArrayList<FechaModel> findByCiAndFecha (Long ci, Date fecha){
-
-        return fechaRepository.findByCiAndFecha(ci, fecha);
-    }
 
     public ArrayList<FechaModel> findByCiAndFechaAndCantidadConsulta (Long ci, Date fecha){
         return fechaRepository.findByCiAndFechaAndCantidadConsulta(ci, fecha);

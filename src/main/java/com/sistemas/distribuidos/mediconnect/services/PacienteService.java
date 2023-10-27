@@ -27,7 +27,8 @@ public class PacienteService {
     }
 
     public Optional<PacienteModel> obtenerPorCi (Long ci) {
-        return pacienteRepository.findById(ci);
+
+        return pacienteRepository.findBycedula(ci);
     }
 
 }

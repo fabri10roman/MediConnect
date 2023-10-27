@@ -9,7 +9,7 @@ import java.sql.Date;
 public class CitaModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long ciPaciente;
 
