@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FechaRepository extends JpaRepository<FechaModel, Long> {
@@ -17,6 +17,6 @@ public interface FechaRepository extends JpaRepository<FechaModel, Long> {
     ArrayList<Date> findByCiAndCantidadConsultas(@Param("ci") Long ci);
 
     @Query("SELECT f FROM FechaModel f WHERE f.ci =:ci AND f.fecha =:fecha AND f.cantidadConsultas > 0")
-    ArrayList<FechaModel> findByCiAndFechaAndCantidadConsulta (@Param("ci") Long ci, @Param("fecha") Date fecha);
+    Optional<FechaModel> findByCiAndFechaAndCantidadConsulta (@Param("ci") Long ci, @Param("fecha") Date fecha);
 
 }

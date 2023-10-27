@@ -1,6 +1,5 @@
 package com.sistemas.distribuidos.mediconnect.services;
 
-import com.sistemas.distribuidos.mediconnect.models.EspecialistaModel;
 import com.sistemas.distribuidos.mediconnect.models.FechaModel;
 import com.sistemas.distribuidos.mediconnect.repositories.FechaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FechaService {
@@ -26,13 +25,8 @@ public class FechaService {
     }
 
 
-    public ArrayList<FechaModel> findByCiAndFechaAndCantidadConsulta (Long ci, Date fecha){
+    public Optional<FechaModel> findByCiAndFechaAndCantidadConsulta (Long ci, Date fecha){
         return fechaRepository.findByCiAndFechaAndCantidadConsulta(ci, fecha);
     }
 
-
-    // Esto es una prueba para agendar cita
-    public FechaModel findById(Long id){
-        return fechaRepository.findById(id).get();
-    }
 }

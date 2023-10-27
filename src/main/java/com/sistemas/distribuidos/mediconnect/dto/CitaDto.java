@@ -5,13 +5,9 @@ import java.time.LocalDate;
 
 public class CitaDto {
 
-
     private Long id;
     private Long ciPaciente;
-
     private Long ciEspecialista;
-
-
     private LocalDate fecha;
 
     public CitaDto(Long id, Long ciPaciente, Long ciEspecialista, LocalDate fecha) {

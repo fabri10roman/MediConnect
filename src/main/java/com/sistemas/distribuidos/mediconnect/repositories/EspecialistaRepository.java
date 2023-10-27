@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public interface EspecialistaRepository extends JpaRepository<EspecialistaModel, Long> {

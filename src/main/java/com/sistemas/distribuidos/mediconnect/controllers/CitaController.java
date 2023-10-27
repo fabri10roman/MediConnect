@@ -2,12 +2,15 @@ package com.sistemas.distribuidos.mediconnect.controllers;
 
 import com.sistemas.distribuidos.mediconnect.dto.CitaDto;
 import com.sistemas.distribuidos.mediconnect.models.CitaModel;
+import com.sistemas.distribuidos.mediconnect.models.FechaModel;
 import com.sistemas.distribuidos.mediconnect.services.CitaService;
 import com.sistemas.distribuidos.mediconnect.services.EspecialistaService;
 import com.sistemas.distribuidos.mediconnect.services.FechaService;
 import com.sistemas.distribuidos.mediconnect.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
+
 
 
 import java.sql.Date;
@@ -33,8 +36,12 @@ public class CitaController {
 
         if (pacienteService.obtenerPorCi(cita.getCiPaciente()).isPresent() && especialistaService.obtenerPorCi(cita.getCiEspecialista()).isPresent()){
 
-            if (!fechaService.findByCiAndFechaAndCantidadConsulta(cita.getCiEspecialista(),Date.valueOf(cita.getFecha())).isEmpty()){
+            Optional<FechaModel> model = fechaService.findByCiAndFechaAndCantidadConsulta(cita.getCiEspecialista(),Date.valueOf(cita.getFecha()));
 
+            if (model.isPresent()){
+
+                    model.get().setCantidadConsultas(model.get().getCantidadConsultas()-1);
+                    fechaService.registrarFecha(new FechaModel(model.get().getId(),model.get().getCi(),model.get().getFecha(),model.get().getCantidadConsultas()));
                     return citaService.agendarCita(new CitaModel(cita.getId(),cita.getCiPaciente(),cita.getCiEspecialista(),Date.valueOf(cita.getFecha())));
             }
             else {
